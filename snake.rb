@@ -1,45 +1,54 @@
 class Snake
   @final = ""
-  @a_array = [" 000 ", "<   0", "    0", " 0**0", "0   0", " 0000"]
-  @d_array = ["    ^", "    0", " 0**0", "0   0", "0   0", " 000 "]
+  @a_array, @c_array, @d_array, @e_array, @h_array, @r_array, @t_array, @v_array = Array.new
 
   def initialize(name)
+    @a_array = [" 000 ", "<   0", "    0", " 0**0", "0   0", " 0000"]
+    @c_array = [" 000 ", "0   V", "0    ", "0    ", "0   *", " 00* "]
+    @d_array = ["    ^", "    0", " 0**0", "0   0", "0   0", " 0000"]
+    @e_array = [" 000 ", "0   0", "0**00", "0    ", "0   >", " 000 "]
+    @h_array = ["^    ", "0    ", "0 00 ", "00  0", "0   *", "0   *"]
+    @r_array = ["0 00 ", "00  V", "0    ", "0    ", "*    ", "*    "]
+    @t_array = ["  ^  ", "  0  ", "00000", "  0  ", "  *  ", "  *  "]
+    @v_array = ["^   *", "0   *", "0   0", " 0 0 ", " 0 0  ","  0  "]
     createPath name
   end
 
   def createPath(name)
-    size = name.length
     for i in 0..6
-      for j in 0..size
-        print @a_array[i] + "\t" + @d_array[i]
-      end
+      name.each_char { |c|
+        array = getLines c
+        print array[i]
+        print "\t"
+      }
+      print "\n"
     end
   end
 
   def getLines(c)
       case c
         when 'a'
-         print "a"
+         return @a_array
         when 'b'
          print "b"
         when 'c'
-         print "c"
+         return @c_array
         when 'd'
          print "d"
         when 'e'
-         print "e"
+         return @e_array
         when 'f'
-         print "  * "
-         print " 0 *"
-         print " 0  "
-         print "0000"
-         print " 0  "
-         print " 0  "
-         print " V  "
+         puts "  * "
+         puts " 0 *"
+         puts " 0  "
+         puts "0000"
+         puts " 0  "
+         puts " 0  "
+         puts " V  "
         when 'g'
          print "g"
         when 'h'
-         print "h"
+         return @h_array
         when 'i'
          print "i"
         when 'j'
@@ -59,20 +68,20 @@ class Snake
         when 'q'
          print "q"
         when 'r'
-         print "r"
+         return @r_array
         when 's'
-         print " 000 "
-         print "0   V"
-         print " 0   "
-         print "  00 "
-         print "*   0"
-         print " *00 "
+         puts " 000 "
+         puts "0   V"
+         puts " 0   "
+         puts "  00 "
+         puts "*   0"
+         puts " *00 "
         when 't'
-         print "t"
+         return @t_array
         when 'u'
          print "u"
         when 'v'
-         print "v"
+         return @v_array
         when 'w'
          print "w"
         when 'x'
